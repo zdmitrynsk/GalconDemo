@@ -4,7 +4,7 @@ namespace CodeBase.Infrastructure.StaticData
 {
   public class StaticDataService : IStaticDataService
   {
-    public PlanetsGeneratorConfig PlanetsGenerator; 
+    public PlanetsGeneratorConfig PlanetsGenerator { get; private set; } 
     
     public void Load()
     {

@@ -9,9 +9,16 @@ namespace CodeBase.Infrastructure
 
     private void Awake()
     {
-      _game = new Game(new ServiceLocator(), this);
+      _game = new Game(CreateServiceLocator(), this);
       
       DontDestroyOnLoad(this);
+    }
+
+    private static IServiceLocator CreateServiceLocator()
+    {
+      IServiceLocator serviceLocator = new ServiceLocator();
+      serviceLocator.Init();
+      return serviceLocator;
     }
   }
 }
