@@ -2,10 +2,10 @@
 {
   public class DistancePlanet
   {
-    public readonly PlanetInfo Planet;
+    public readonly PlanetData Planet;
     public readonly float Distance;
 
-    public DistancePlanet(PlanetInfo planet, float distance)
+    public DistancePlanet(PlanetData planet, float distance)
     {
       Planet = planet;
       Distance = distance;

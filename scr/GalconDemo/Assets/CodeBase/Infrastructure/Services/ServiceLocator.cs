@@ -1,3 +1,4 @@
+using CodeBase.Infrastructure.AssetManagement;
 using CodeBase.Infrastructure.StaticData;
 
 namespace CodeBase.Infrastructure.Services
@@ -6,15 +7,17 @@ namespace CodeBase.Infrastructure.Services
   {
     public IStaticDataService StaticDataService { get; private set; }
     public IRandomService RandomUnityService { get; private set; }
+    
+    public IGameFactory GameFactory { get; private set; }
+    public IAssetProvider AssetProvider { get; private set; }
 
     public void Init()
     {
       InitStaticDataService();
-      InitRandomUnityService();
-    }
-
-    private void InitRandomUnityService() => 
       RandomUnityService = new RandomUnityService();
+      AssetProvider = new AssetProvider();
+      GameFactory = new GameFactory(AssetProvider, StaticDataService);
+    }
 
     private void InitStaticDataService()
     {

@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace CodeBase.Infrastructure
 {
-  public class PlanetInfo
+  public class PlanetData
   {
     public Vector2 Position;
     public int Radius;

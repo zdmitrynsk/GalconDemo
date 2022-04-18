@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 651930677432418295eb5683fde3b43e, type: 3}
   m_Name: PlanetsGeneratorConfig
   m_EditorClassIdentifier: 
-  minRadius: 10
-  maxRadius: 30
-  countPlanets: 10
+  minRadius: 100
+  maxRadius: 150
+  countPlanets: 15

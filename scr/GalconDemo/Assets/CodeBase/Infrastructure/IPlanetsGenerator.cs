@@ -4,6 +4,6 @@ namespace CodeBase.Infrastructure
 {
   public interface IPlanetsGenerator
   {
-    public List<PlanetInfo> Create();
+    public List<PlanetData> Create();
   }
 }

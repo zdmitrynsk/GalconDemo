@@ -13,7 +13,7 @@ namespace CodeBase.Infrastructure
     private IRandomService _randomService;
     private PointInfo[,] _maskAreaPlanets;
 
-    private List<PlanetInfo> _createdPlanets;
+    private List<PlanetData> _createdPlanets;
 
     public PlanetsGenerator(IStaticDataService staticDataService, IRandomService randomService)
     {
@@ -21,10 +21,10 @@ namespace CodeBase.Infrastructure
       _staticDataService = staticDataService;
     }
 
-    public List<PlanetInfo> Create()
+    public List<PlanetData> Create()
     {
       _maskAreaPlanets = CreateMaskAreaPlanets();
-      _createdPlanets = new List<PlanetInfo>();
+      _createdPlanets = new List<PlanetData>();
       
       for (int i = 0; i < CountPlanetsSettings(); i++) 
         _createdPlanets.Add(CreatePlanet());
@@ -51,13 +51,13 @@ namespace CodeBase.Infrastructure
     private int CountPlanetsSettings() => 
       _staticDataService.PlanetsGenerator.countPlanets;
 
-    private PlanetInfo CreatePlanet()
+    private PlanetData CreatePlanet()
     {
       List<PointInfo> emptyPoints = FindEmptyPoints(_maskAreaPlanets);
       PointInfo randomEmptyPoint = RandomPoint(emptyPoints);
 
       int newRadius = NewRadius(randomEmptyPoint);
-      FillMaskArea(newRadius, randomEmptyPoint.Position);
+      FillMaskArea(newRadius + MinRadiusSettings(), randomEmptyPoint.Position);
       return CreatePlanet(newRadius, randomEmptyPoint.Position);
     }
 
@@ -94,7 +94,7 @@ namespace CodeBase.Infrastructure
     private DistancePlanet FindNeighboringPlanet(Vector2 position)
     {
       List<DistancePlanet> distancePlanets = new List<DistancePlanet>();
-      foreach (PlanetInfo planet in _createdPlanets)
+      foreach (PlanetData planet in _createdPlanets)
       {
         float distance = Vector2.Distance(planet.Position, position);
         distancePlanets.Add(new DistancePlanet(planet, distance));
@@ -147,8 +147,8 @@ namespace CodeBase.Infrastructure
       return max < MaskHeight() - 1 ? max : MaskHeight() - 1;
     }
 
-    private PlanetInfo CreatePlanet(int newRadius, Vector2 position) => 
-      new PlanetInfo {Radius = newRadius, Position = position};
+    private PlanetData CreatePlanet(int newRadius, Vector2 position) => 
+      new PlanetData {Radius = newRadius, Position = position};
 
     private int MinRadiusSettings() => 
       _staticDataService.PlanetsGenerator.minRadius;

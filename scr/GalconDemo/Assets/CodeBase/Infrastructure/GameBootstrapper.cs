@@ -10,6 +10,7 @@ namespace CodeBase.Infrastructure
     private void Awake()
     {
       _game = new Game(CreateServiceLocator(), this);
+      _game.Start();
       
       DontDestroyOnLoad(this);
     }
