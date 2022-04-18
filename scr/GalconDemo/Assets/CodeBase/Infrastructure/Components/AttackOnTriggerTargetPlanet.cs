@@ -1,5 +1,4 @@
-﻿using System;
-using CodeBase.Infrastructure.Data;
+﻿using CodeBase.Infrastructure.Data;
 using UnityEngine;
 
 namespace CodeBase.Infrastructure.Components

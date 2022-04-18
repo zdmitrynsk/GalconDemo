@@ -9,7 +9,7 @@ namespace CodeBase.Infrastructure
 
     private void Awake()
     {
-      _game = new Game(CreateServiceLocator(), this);
+      _game = new Game(CreateServiceLocator());
       _game.Start();
       
       DontDestroyOnLoad(this);

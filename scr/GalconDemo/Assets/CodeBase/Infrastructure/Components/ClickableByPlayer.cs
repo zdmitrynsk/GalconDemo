@@ -1,6 +1,4 @@
-﻿using System;
-using CodeBase.Infrastructure.Data;
-using CodeBase.Infrastructure.Services;
+﻿using CodeBase.Infrastructure.Services;
 using UnityEngine;
 
 namespace CodeBase.Infrastructure.Components
