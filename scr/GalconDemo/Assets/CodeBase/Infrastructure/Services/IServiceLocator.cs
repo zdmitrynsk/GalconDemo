@@ -9,6 +9,8 @@ namespace CodeBase.Infrastructure.Services
     IRandomService RandomUnityService { get; }
     IGameFactory GameFactory { get; }
     IAssetProvider AssetProvider { get; }
-    void Init();
+    IStarshipsGenerator StarshipsGenerator { get; }
+    ICoroutineRunner CoroutineRunner { get; }
+    void Init(ICoroutineRunner coroutineRunner);
   }
 }

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using CodeBase.Infrastructure.AssetManagement;
+using CodeBase.Infrastructure.Data;
 using CodeBase.Infrastructure.Services;
 using CodeBase.Infrastructure.StaticData;
 using UnityEngine;
@@ -16,6 +17,7 @@ namespace CodeBase.Infrastructure
     private IStaticDataService _staticDataService;
     private IRandomService _randomUnityService;
     private List<GameObject> _planetsObjects;
+    private IStarshipsGenerator _starshipsGenerator;
 
     public Game(IServiceLocator serviceLocator, ICoroutineRunner coroutineRunner)
     {
@@ -26,13 +28,22 @@ namespace CodeBase.Infrastructure
       _assetProvider = serviceLocator.AssetProvider;
       _staticDataService = serviceLocator.StaticDataService;
       _randomUnityService = serviceLocator.RandomUnityService;
+      _starshipsGenerator = serviceLocator.StarshipsGenerator;
     }
 
     public void Start()
     {
       _gameArea = _gameFactory.CreateGameArea();
-      List<PlanetData> planetDatas = CreatePlanetsData();
-      _planetsObjects = CreatePlanetsObjects(planetDatas);
+      List<PlanetData> planetsData = CreatePlanetsData();
+      _planetsObjects = CreatePlanetsObjects(planetsData);
+      InitPlayerPlanet(planetsData);
+      _starshipsGenerator.Start(planetsData);
+    }
+
+    private void InitPlayerPlanet(List<PlanetData> planetsData)
+    {
+      planetsData[0].SetOwner(OwnerType.Player);
+      planetsData[0].SetStarships(_staticDataService.GameConfig.countStartPlayerStarships);
     }
 
     private List<PlanetData> CreatePlanetsData()

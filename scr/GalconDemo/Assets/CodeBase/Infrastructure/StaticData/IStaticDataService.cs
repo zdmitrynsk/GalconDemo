@@ -3,6 +3,6 @@
   public interface IStaticDataService
   {
     void Load();
-    PlanetsGeneratorConfig PlanetsGenerator { get; }
+    GameConfig GameConfig { get; }
   }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using CodeBase.Infrastructure.Data;
 using CodeBase.Infrastructure.Services;
 using CodeBase.Infrastructure.StaticData;
 using UnityEngine;
@@ -28,7 +29,7 @@ namespace CodeBase.Infrastructure
       
       for (int i = 0; i < CountPlanetsSettings(); i++) 
         _createdPlanets.Add(CreatePlanet());
-
+      
       return _createdPlanets;
     }
 
@@ -49,7 +50,7 @@ namespace CodeBase.Infrastructure
       return maskAreaPlanets;
     }
     private int CountPlanetsSettings() => 
-      _staticDataService.PlanetsGenerator.countPlanets;
+      _staticDataService.GameConfig.countPlanets;
 
     private PlanetData CreatePlanet()
     {
@@ -148,13 +149,16 @@ namespace CodeBase.Infrastructure
     }
 
     private PlanetData CreatePlanet(int newRadius, Vector2 position) => 
-      new PlanetData {Radius = newRadius, Position = position};
+      new PlanetData {Radius = newRadius, Position = position, CountStarships = RandomCountStarships()};
+
+    private int RandomCountStarships() => 
+      _randomService.Next(_staticDataService.GameConfig.minStartStarships, _staticDataService.GameConfig.maxStartStarships);
 
     private int MinRadiusSettings() => 
-      _staticDataService.PlanetsGenerator.minRadius;
+      _staticDataService.GameConfig.minRadius;
 
     private int MaxRadiusSettings() => 
-      _staticDataService.PlanetsGenerator.maxRadius;
+      _staticDataService.GameConfig.maxRadius;
 
     private int MaskHeight() => 
       Screen.height - MinRadiusSettings()*2;

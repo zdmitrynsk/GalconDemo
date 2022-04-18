@@ -15,10 +15,10 @@ namespace CodeBase.Infrastructure
       DontDestroyOnLoad(this);
     }
 
-    private static IServiceLocator CreateServiceLocator()
+    private IServiceLocator CreateServiceLocator()
     {
       IServiceLocator serviceLocator = new ServiceLocator();
-      serviceLocator.Init();
+      serviceLocator.Init(this);
       return serviceLocator;
     }
   }

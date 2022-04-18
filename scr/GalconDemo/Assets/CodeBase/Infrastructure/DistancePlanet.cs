@@ -1,4 +1,6 @@
-﻿namespace CodeBase.Infrastructure
+﻿using CodeBase.Infrastructure.Data;
+
+namespace CodeBase.Infrastructure
 {
   public class DistancePlanet
   {

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using CodeBase.Infrastructure.Data;
 using UnityEngine;
 
 namespace CodeBase.Infrastructure
@@ -7,5 +8,6 @@ namespace CodeBase.Infrastructure
   {
     GameObject CreateGameArea();
     List<GameObject> CreatePlanets(List<PlanetData> planetDatas);
+    void RunStarships(PlanetData lastSelectedPlanet, PlanetData clickedPlanet, int countNewStarships);
   }
 }
