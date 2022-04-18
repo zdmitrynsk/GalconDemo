@@ -6,7 +6,9 @@ namespace CodeBase.Infrastructure
   {
     public Game(IServiceLocator serviceLocator, ICoroutineRunner coroutineRunner)
     {
-      var planetsGenerator = new PlanetsGenerator(serviceLocator.StaticDataService, serviceLocator.RandomUnityService);
+      var planetsGenerator = new PlanetsGenerator(
+        serviceLocator.StaticDataService
+        , serviceLocator.RandomUnityService);
       planetsGenerator.Create();
     }
   }

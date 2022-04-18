@@ -112,7 +112,6 @@ namespace CodeBase.Infrastructure
       for (int x = minX; x <= maxX; x++)
       {
         int maxCircleY = Mathf.Abs(GetYCircle(radius, centerPosition, x));
-        Debug.Log(maxCircleY);
         int minFillingY = MinFillingValue(centerPosition.y, maxCircleY);
         int maxFillingY = MaxFillingY(centerPosition.y, maxCircleY);
 
