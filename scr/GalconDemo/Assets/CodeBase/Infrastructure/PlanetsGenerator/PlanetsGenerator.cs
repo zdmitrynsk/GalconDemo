@@ -5,7 +5,7 @@ using CodeBase.Infrastructure.Services;
 using CodeBase.Infrastructure.StaticData;
 using UnityEngine;
 
-namespace CodeBase.Infrastructure
+namespace CodeBase.Infrastructure.PlanetsGenerator
 {
   public class PlanetsGenerator : IPlanetsGenerator
   {

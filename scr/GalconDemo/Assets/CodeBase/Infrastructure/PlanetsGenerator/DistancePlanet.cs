@@ -1,6 +1,6 @@
 ﻿using CodeBase.Infrastructure.Data;
 
-namespace CodeBase.Infrastructure
+namespace CodeBase.Infrastructure.PlanetsGenerator
 {
   public class DistancePlanet
   {

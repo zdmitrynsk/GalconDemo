@@ -39,7 +39,7 @@ namespace CodeBase.Infrastructure
 
     private List<PlanetData> CreatePlanetsData()
     {
-      var planetsGenerator = new PlanetsGenerator(_staticDataService, _randomUnityService);
+      var planetsGenerator = new PlanetsGenerator.PlanetsGenerator(_staticDataService, _randomUnityService);
       return planetsGenerator.Create();
     }
 
